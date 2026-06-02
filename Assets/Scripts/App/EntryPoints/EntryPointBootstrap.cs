@@ -22,6 +22,7 @@ public sealed class EntryPointBootstrap : MonoBehaviour
 
     private void Awake()
     {
+        FrameRateBootstrap.Apply();
         EnsureServices();
         _controller = new BootstrapController(_bootstrapView);
     }
