@@ -1,161 +1,180 @@
 # Emoji Battle
 
-A **shipped mobile puzzle-battle game** built in **Unity 6**.  
-Inspired by classic tic-tac-toe and expanded with emoji customization, AI opponents, basic progression, and a mobile-first UI.
+Released Android game built in Unity 6 and C#.
 
-📱 **Released on Google Play**  
-🔗 [Open on Google Play](https://play.google.com/store/apps/details?id=com.sd7gamestudio.emojibattle)
+Google Play: https://play.google.com/store/apps/details?id=com.sd7gamestudio.emojibattle
 
----
+## Overview
 
-## ✅ Project Status
+Emoji Battle is a complete mobile game released on Google Play. The project demonstrates my ability to take a Unity game from prototype to public Android release while handling gameplay logic, UI flow, AI behavior, persistent progress, ads integration, debugging, and build preparation.
 
-**Emoji Battle is a completed and released project.**  
-The current version represents a **finished gameplay feature set** and a **production-ready architecture**.
+The game is a turn-based board battle built around emoji characters, difficulty selection, player progression, rewards, settings, popups, and mobile monetization flow.
 
-The project is no longer under active feature development and is preserved as a **reference implementation** of clean gameplay architecture, SRP, and MVC-style separation in Unity.
+## My Role
 
----
+Solo Unity C# development across gameplay programming, mobile UI implementation, architecture refactoring, persistent data, ads integration, debugging, and Google Play release preparation.
 
-## 🧱 Architecture & Refactor Summary
+## Key Systems I Built
 
-The project was **fully refactored** with a strong focus on:
-- **MVC-style structure**
-- **Single Responsibility Principle (SRP)**
-- Clear separation between **game logic**, **UI**, and **infrastructure**
-- Reduced coupling and removal of god-objects
+### Turn-Based Gameplay Flow
 
-This refactor reflects my current approach to maintainable gameplay systems in Unity.
+Implemented the core gameplay loop around board state, turn state, win checking, game result handling, and UI updates.
 
----
+Relevant systems include:
 
-## 🎮 Implemented Features
+- board state;
+- cell state;
+- turn state;
+- move processing;
+- win checking;
+- game-over result flow;
+- result UI and reward result handling.
 
-- **Custom Emoji System**  
-  9 colours × 87 emojis, rarity levels, unlock rules driven by ScriptableObjects.
-- **AI Opponents (Strategy + Factory)**  
-  Easy / Normal / Hard AI via `IAIStrategy` and factory selection.  
-  New difficulty levels can be added without modifying existing logic.
-- **Core Game Logic (UI-independent domain)**  
-  Turn handling, win/draw detection, and board state logic fully separated from UI.
-- **Player Progression & Saving**  
-  Unlock and progression system persisted using **JSON / PlayerPrefs**.
-- **Mobile-Friendly UI**  
-  Lobby, emoji selection, popups, and animations with no gameplay rules inside UI.
-- **Clean Architecture Refactor**  
-  MVC-style separation, SRP across systems, and explicit dependency direction.
-- **Mobile Optimization**  
-  Lightweight assets, controlled allocations, no unnecessary runtime allocations.
+Engineering value:
 
----
+- gameplay rules are separated from UI button logic;
+- the game loop is easier to debug because board state, turn state, and result calculation are explicit;
+- UI reacts to gameplay state instead of owning the rules.
 
-## 🧠 Tech & Architecture
+### AI Strategy System
 
-- **Unity 6**, **C#**
-- **MVC-style architecture** (Model / View / Controller)
-- **SRP** across gameplay, AI, and UI
-- **Strategy + Factory patterns** for AI behaviour
-- **ScriptableObjects** for configuration and emoji data
-- **Event-based communication** between systems
-- **Domain logic independent from UI**
-- Coroutines for timing and animations
-- Player progress stored via JSON / PlayerPrefs
-- Shader Graph for basic UI and VFX effects
+Implemented reusable AI behavior using Strategy Pattern.
 
----
+Relevant systems include:
 
-## 🧩 Architecture Overview
+- AI strategy interface;
+- easy, normal, and hard strategies;
+- AI strategy factory;
+- AI selection service;
+- difficulty display and difficulty UI flow.
 
-### Model (Domain / Data)
-- Board state and win/draw evaluation  
-- AI decision logic (strategies)  
-- Progression and persistence models  
+Engineering value:
 
-### View (Presentation)
-- UI screens, widgets, visual states, animations  
-- No gameplay rules inside UI components  
+- difficulty behavior is extendable without rewriting the gameplay loop;
+- AI logic is isolated from UI and board rendering;
+- future strategies can be added as separate classes.
 
-### Controller (Application Flow)
-- Scene bootstrap and initialization  
-- Game flow orchestration  
-- Connects Domain ↔ Presentation  
+### Progression And Persistent Data
 
-> **Key principle:** gameplay logic does not depend on UI, and UI components do not contain game rules.
+Implemented persistent player progress and game data services.
 
----
+Relevant systems include:
 
-## 📂 Project Structure
+- save payload model;
+- game progress model;
+- player profile model;
+- storage abstraction;
+- game data service;
+- save version handling;
+- reward rules and emoji progression.
 
-```text
-Assets/
-  Scripts/
-    App/             # Entry points, bootstrap, scene flow
-    Domain/          # Pure game logic (board, AI, progression)
-    Infrastructure/  # Data models, saving, profiles
-    Presentation/    # UI views and visual logic
-  Sprites/
-  Prefabs/
-```
+Engineering value:
 
----
+- storage implementation is hidden behind an interface;
+- saved data has a version field for safer future migrations;
+- progression is represented as data rather than scattered UI state.
 
-## 🚀 Build & Run
+### UI, Lobby, And Popup Flow
 
-1. Install **Unity 6** (latest available version).
-2. Clone the repository:
-   ```bash
-   git clone https://github.com/SD7games/Emoji_Battle.git
-   ```
-3. Open the project via Unity Hub.
-4. Main scenes:
-   - `Lobby`
-   - `Game`
-5. Platforms:
-   - **Android** (released)
-   - WebGL (experimental)
-   - iOS (not published)
+Implemented the game UI across lobby, gameplay, settings, results, and informational popups.
 
----
+Relevant systems include:
 
-## 📸 Screenshots
+- lobby controller, lobby service, and lobby view;
+- avatar/emoji selection UI;
+- AI difficulty UI;
+- popup base classes;
+- popup canvas controller;
+- popup service;
+- result popups;
+- settings, no-internet, rewarded, victory, defeat, draw, and complete popups;
+- fade/scale UI animation helpers.
 
-<p align="center">
-  <img src="BootstrapScene.png" width="260" />
-</p>
+Engineering value:
 
-<p align="center">
-  <img src="LobbyScene.png" width="260" />
-  <img src="MainScene.png" width="260" />
-</p>
+- popup handling is centralized;
+- lobby and gameplay screens have dedicated controllers/views;
+- UI logic is easier to maintain because it is not mixed directly into core board rules.
 
-<p align="center">
-  <b>Loading → Lobby → Gameplay</b>
-</p>
+### Ads Integration
 
----
+Implemented Unity Ads integration for rewarded and interstitial ads.
 
-## 🎯 Purpose of This Project
+Relevant systems include:
 
-This project serves as:
-- a **shipped mobile game**
-- a **reference example of clean Unity gameplay architecture**
-- a demonstration of **SRP, MVC-style separation, and AI patterns**
-- a portfolio piece showcasing **end-to-end feature delivery**
+- rewarded ad state tracking;
+- initialization/load/show callbacks;
+- load timeout handling;
+- online/offline checks;
+- resume handling after app focus/pause;
+- rewarded callback flow;
+- interstitial pacing after matches.
 
----
+Engineering value:
 
-## 👨‍💻 Developer
+- ad state is visible to UI;
+- offline/failed/loading/ready/showing states are explicit;
+- ads are integrated into gameplay flow without blocking core game state.
 
-**Oleksandr Tokarev**  
-Unity & C# Game Developer based in Finland
+### Services And Mobile Features
 
----
+Implemented supporting mobile-facing services.
 
-## License
+Relevant systems include:
 
-This project is licensed under the **MIT License** (source code only).
+- audio service;
+- settings service;
+- vibration service;
+- internet state service;
+- scene fading and UI input helpers.
 
-⚠️ **Important**
-- The license applies to source code only.
-- Game assets (art, audio, icons, branding) are not included.
-- Republishing this project with the same branding or assets is not permitted.
+Engineering value:
+
+- shared app services are separated from scene-specific gameplay code;
+- persistent service objects are initialized during bootstrap;
+- mobile-specific behavior is handled through dedicated services.
+
+## Architecture
+
+The project is organized into practical layers:
+
+- App/Bootstrap: startup and entry points.
+- Domain: AI, board rules, emoji data, progress rules.
+- Infrastructure: data models, storage, game data service.
+- Presentation: gameplay UI, lobby UI, main view, popups, common UI helpers.
+- Services: ads, audio, network state, settings, vibration.
+
+Architecture principles used:
+
+- SRP-style class responsibilities;
+- MVC-style separation where it helps readability;
+- Strategy Pattern for AI;
+- event-driven updates between gameplay and UI;
+- service abstractions for app-level systems;
+- persistent data separated from presentation state.
+
+## Tech Stack
+
+- Unity 6
+- C#
+- UGUI
+- Unity Ads
+- Strategy Pattern
+- Event-driven gameplay/UI flow
+- Persistent player data
+- Android build pipeline
+- Google Play release workflow
+
+## What This Project Demonstrates
+
+- Shipping a complete Unity mobile game to Google Play.
+- Implementing core gameplay, UI, persistence, ads, and release work in one project.
+- Refactoring a prototype toward clearer feature boundaries.
+- Handling mobile-specific states such as offline mode, ad loading, app resume, and persistent settings.
+- Taking responsibility for the full path from playable prototype to public store release.
+
+## Author
+
+Oleksandr Tokarev  
+Unity C# Developer  
+Portfolio: https://tokarevdev.github.io/
