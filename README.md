@@ -2,7 +2,20 @@
 
 Released Android game built in Unity 6 and C#.
 
-Google Play: https://play.google.com/store/apps/details?id=com.sd7gamestudio.emojibattle
+Google Play: https://play.google.com/store/apps/details?id=com.sd7gamestudio.emojibattle  
+Portfolio hub: https://tokarevdev.github.io/
+
+## Quick Review
+
+This repository is public as a portfolio/code review sample. Unity vendor packages and imported assets are present, but the portfolio-relevant code lives under `Assets/Scripts/`.
+
+Start here:
+
+- Main project code: `Assets/Scripts/`
+- Domain logic: `Assets/Scripts/Domain/`
+- Persistence and data services: `Assets/Scripts/Infrastructure/`
+- Gameplay, lobby, UI, and popups: `Assets/Scripts/Presentation/`
+- Bootstrap and runtime setup: `Assets/Scripts/App/`
 
 ## Overview
 
@@ -155,15 +168,7 @@ Architecture principles used:
 
 ## Tech Stack
 
-- Unity 6
-- C#
-- UGUI
-- Unity Ads
-- Strategy Pattern
-- Event-driven gameplay/UI flow
-- Persistent player data
-- Android build pipeline
-- Google Play release workflow
+Unity 6, C#, UGUI, Unity Ads, Strategy Pattern, event-driven gameplay/UI flow, persistent player data, Android build pipeline, Google Play release workflow.
 
 ## What This Project Demonstrates
 
@@ -176,5 +181,5 @@ Architecture principles used:
 ## Author
 
 Oleksandr Tokarev  
-Unity C# Developer  
+Unity C# Developer / C# Gameplay Programmer  
 Portfolio: https://tokarevdev.github.io/
