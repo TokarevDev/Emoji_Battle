@@ -4,7 +4,6 @@ Released Android game built with Unity 6 and C#.
 
 Google Play: https://play.google.com/store/apps/details?id=com.sd7gamestudio.emojibattle  
 Portfolio hub: https://tokarevdev.github.io
-
 Gameplay video: https://youtube.com/shorts/k98hLS689PY?feature=share
 
 ## Quick Review
