@@ -1,9 +1,10 @@
 # Emoji Battle
 
-Released Android game built in Unity 6 and C#.
+Released Android game built with Unity 6 and C#.
 
 Google Play: https://play.google.com/store/apps/details?id=com.sd7gamestudio.emojibattle  
 Portfolio hub: https://tokarevdev.github.io/
+Gameplay video: https://youtube.com/shorts/k98hLS689PY?feature=share
 
 ## Quick Review
 
@@ -19,133 +20,53 @@ Start here:
 
 ## Overview
 
-Emoji Battle is a complete mobile game released on Google Play. The project demonstrates my ability to take a Unity game from prototype to public Android release while handling gameplay logic, UI flow, AI behavior, persistent progress, ads integration, debugging, and build preparation.
+Emoji Battle is a complete mobile game taken from prototype to public Google Play release. It demonstrates practical Unity feature ownership across turn-based gameplay, AI difficulty, progression, persistent save data, UGUI flow, popup handling, Unity Ads, Android build preparation, and post-release iteration.
 
-The game is a turn-based board battle built around emoji characters, difficulty selection, player progression, rewards, settings, popups, and mobile monetization flow.
+The game is a casual board battle built around emoji characters, short match sessions, difficulty selection, unlock progression, settings, offline support, and optional rewarded ads.
+
+## Impact
+
+- Challenge: turn a small Unity prototype into a complete Android game that could pass store review and be maintained after release.
+- Action: owned combat flow, AI, persistence, UI states, popups, ads, Android build preparation, publishing steps, and post-release runtime tuning.
+- Result: released a complete Android game on Google Play with reviewable source code, gameplay media, ads flow, persistence, and a complete player loop.
+
+Post-release update: added automatic frame-rate selection for supported 90/120 Hz devices to improve gameplay smoothness on higher-refresh mobile screens.
 
 ## My Role
 
-Solo Unity C# development across gameplay programming, mobile UI implementation, architecture refactoring, persistent data, ads integration, debugging, and Google Play release preparation.
+Solo Unity C# development across gameplay programming, mobile UI implementation, architecture refactoring, persistent data, ads integration, debugging, Android build preparation, and Google Play release workflow.
 
-## Key Systems I Built
+## Key Systems
 
 ### Turn-Based Gameplay Flow
 
-Implemented the core gameplay loop around board state, turn state, win checking, game result handling, and UI updates.
-
-Relevant systems include:
-
-- board state;
-- cell state;
-- turn state;
-- move processing;
-- win checking;
-- game-over result flow;
-- result UI and reward result handling.
-
-Engineering value:
-
-- gameplay rules are separated from UI button logic;
-- the game loop is easier to debug because board state, turn state, and result calculation are explicit;
-- UI reacts to gameplay state instead of owning the rules.
+- Board state, cell state, turn state, move processing, win checking, game-over handling, result UI, and reward result flow.
+- Gameplay rules are separated from UI button logic, making board state, turn state, and result calculation explicit and easier to debug.
+- UI reacts to gameplay state instead of owning the core rules.
 
 ### AI Strategy System
 
-Implemented reusable AI behavior using Strategy Pattern.
-
-Relevant systems include:
-
-- AI strategy interface;
-- easy, normal, and hard strategies;
-- AI strategy factory;
-- AI selection service;
-- difficulty display and difficulty UI flow.
-
-Engineering value:
-
-- difficulty behavior is extendable without rewriting the gameplay loop;
-- AI logic is isolated from UI and board rendering;
-- future strategies can be added as separate classes.
+- Easy, normal, and hard AI strategies implemented through Strategy Pattern.
+- AI strategy selection is isolated from board rendering and lobby UI.
+- New difficulty strategies can be added without rewriting the main gameplay loop.
 
 ### Progression And Persistent Data
 
-Implemented persistent player progress and game data services.
-
-Relevant systems include:
-
-- save payload model;
-- game progress model;
-- player profile model;
-- storage abstraction;
-- game data service;
-- save version handling;
-- reward rules and emoji progression.
-
-Engineering value:
-
-- storage implementation is hidden behind an interface;
-- saved data has a version field for safer future migrations;
-- progression is represented as data rather than scattered UI state.
+- Player profile, game progress, save payload model, storage abstraction, game data service, save version field, reward rules, and emoji progression.
+- Persistent player state is represented as data instead of being scattered through UI components.
+- Storage implementation is hidden behind an interface for safer future changes.
 
 ### UI, Lobby, And Popup Flow
 
-Implemented the game UI across lobby, gameplay, settings, results, and informational popups.
+- Lobby controller/service/view, avatar selection, difficulty UI, result screens, settings, no-internet flow, rewarded ad prompts, victory/defeat/draw/complete popups, and animation helpers.
+- Popup handling is centralized through a popup service and canvas controller.
+- Screen-specific UI logic is kept separate from board rules and persistence.
 
-Relevant systems include:
+### Ads And Mobile Runtime States
 
-- lobby controller, lobby service, and lobby view;
-- avatar/emoji selection UI;
-- AI difficulty UI;
-- popup base classes;
-- popup canvas controller;
-- popup service;
-- result popups;
-- settings, no-internet, rewarded, victory, defeat, draw, and complete popups;
-- fade/scale UI animation helpers.
-
-Engineering value:
-
-- popup handling is centralized;
-- lobby and gameplay screens have dedicated controllers/views;
-- UI logic is easier to maintain because it is not mixed directly into core board rules.
-
-### Ads Integration
-
-Implemented Unity Ads integration for rewarded and interstitial ads.
-
-Relevant systems include:
-
-- rewarded ad state tracking;
-- initialization/load/show callbacks;
-- load timeout handling;
-- online/offline checks;
-- resume handling after app focus/pause;
-- rewarded callback flow;
-- interstitial pacing after matches.
-
-Engineering value:
-
-- ad state is visible to UI;
-- offline/failed/loading/ready/showing states are explicit;
-- ads are integrated into gameplay flow without blocking core game state.
-
-### Services And Mobile Features
-
-Implemented supporting mobile-facing services.
-
-Relevant systems include:
-
-- audio service;
-- settings service;
-- vibration service;
-- internet state service;
-- scene fading and UI input helpers.
-
-Engineering value:
-
-- shared app services are separated from scene-specific gameplay code;
-- persistent service objects are initialized during bootstrap;
-- mobile-specific behavior is handled through dedicated services.
+- Unity Ads rewarded/interstitial flow, ad state tracking, load timeout handling, online/offline checks, app focus/resume handling, and interstitial pacing after matches.
+- Ad state is explicit for UI, so failed/loading/ready/showing states do not block core gameplay state.
+- Mobile-facing services include audio, settings, vibration, internet state, scene fading, and UI input helpers.
 
 ## Architecture
 
@@ -159,24 +80,30 @@ The project is organized into practical layers:
 
 Architecture principles used:
 
-- SRP-style class responsibilities;
-- MVC-style separation where it helps readability;
-- Strategy Pattern for AI;
-- event-driven updates between gameplay and UI;
-- service abstractions for app-level systems;
-- persistent data separated from presentation state.
+- SRP-style class responsibilities.
+- MVC-style separation where it improves readability.
+- Strategy Pattern for AI behavior.
+- Event-driven gameplay/UI updates where they reduce coupling.
+- Service abstractions for app-level systems.
+- Persistent data separated from presentation state.
+
+## Code Review Map
+
+- Main project code: `Assets/Scripts/`
+- Domain logic: `Assets/Scripts/Domain/`
+- Persistence and data services: `Assets/Scripts/Infrastructure/`
+- Gameplay, lobby, UI, and popups: `Assets/Scripts/Presentation/`
+- Bootstrap and runtime setup: `Assets/Scripts/App/`
+
+Unity vendor packages and imported assets are present in the repository, but the portfolio-relevant code lives under `Assets/Scripts/`.
 
 ## Tech Stack
 
-Unity 6, C#, UGUI, Unity Ads, Strategy Pattern, event-driven gameplay/UI flow, persistent player data, Android build pipeline, Google Play release workflow.
+Unity 6, C#, UGUI, Strategy Pattern, event-driven gameplay/UI flow, Unity Ads, persistent save data, Android build pipeline, Google Play release workflow, mobile runtime tuning.
 
-## What This Project Demonstrates
+## Repository Hygiene
 
-- Shipping a complete Unity mobile game to Google Play.
-- Implementing core gameplay, UI, persistence, ads, and release work in one project.
-- Refactoring a prototype toward clearer feature boundaries.
-- Handling mobile-specific states such as offline mode, ad loading, app resume, and persistent settings.
-- Taking responsibility for the full path from playable prototype to public store release.
+Release signing credentials, store secrets, and private deployment files are intentionally not kept in the repository. The public repo is meant for source review and project structure inspection.
 
 ## Author
 
