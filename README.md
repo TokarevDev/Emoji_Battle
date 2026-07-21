@@ -22,7 +22,7 @@ Start here:
 
 ## Overview
 
-Emoji Battle is a complete mobile game taken from prototype to public Google Play release during a six-month independent development cycle (Sep 2025 - Feb 2026). It demonstrates end-to-end Unity feature ownership across architecture, turn-based gameplay, AI difficulty, progression, persistent save data, UGUI flow, popup handling, Unity Ads, profiling, Android build preparation, publishing, and post-release support.
+Emoji Battle is a complete mobile game taken from prototype to public Google Play release during a three-month independent development cycle. It demonstrates end-to-end Unity feature ownership across architecture, turn-based gameplay, AI difficulty, progression, persistent save data, UGUI flow, popup handling, Unity Ads, profiling, Android build preparation, publishing, and post-release support.
 
 The game is a casual board battle built around emoji characters, short match sessions, difficulty selection, unlock progression, settings, offline support, and optional rewarded ads.
 
@@ -30,7 +30,7 @@ The game is a casual board battle built around emoji characters, short match ses
 
 - Challenge: turn a small Unity prototype into a complete Android game that could pass store review and be maintained after release.
 - Action: owned combat flow, AI, persistence, UI states, popups, ads, Android build preparation, publishing steps, and post-release runtime tuning.
-- Result: shipped one complete Android game to Google Play within a six-month independent development cycle, with reviewable source code and a complete player loop.
+- Result: shipped one complete Android game to Google Play within a three-month independent development cycle, with reviewable source code and a complete player loop.
 
 Performance result: improved older-device performance from approximately 30 FPS to a stable 60 FPS. Adaptive 90 FPS and 120 FPS targets were validated on supported high-refresh devices by reducing UI draw calls and separating gameplay from presentation logic.
 
