@@ -2,9 +2,9 @@
 
 Released Android game built with Unity 6 and C#.
 
-Google Play: https://play.google.com/store/apps/details?id=com.sd7gamestudio.emojibattle  
+Google Play: https://play.google.com/store/apps/details?id=com.sd7gamestudio.emojibattle
 
-Portfolio hub: https://tokarevdev.github.io 
+Portfolio hub: https://tokarevdev.github.io
 
 Gameplay video: https://youtube.com/shorts/k98hLS689PY?feature=share
 
@@ -22,7 +22,7 @@ Start here:
 
 ## Overview
 
-Emoji Battle is a complete mobile game taken from prototype to public Google Play release. It demonstrates practical Unity feature ownership across turn-based gameplay, AI difficulty, progression, persistent save data, UGUI flow, popup handling, Unity Ads, Android build preparation, and post-release iteration.
+Emoji Battle is a complete mobile game taken from prototype to public Google Play release during a six-month independent development cycle (Sep 2025 - Feb 2026). It demonstrates end-to-end Unity feature ownership across architecture, turn-based gameplay, AI difficulty, progression, persistent save data, UGUI flow, popup handling, Unity Ads, profiling, Android build preparation, publishing, and post-release support.
 
 The game is a casual board battle built around emoji characters, short match sessions, difficulty selection, unlock progression, settings, offline support, and optional rewarded ads.
 
@@ -30,9 +30,9 @@ The game is a casual board battle built around emoji characters, short match ses
 
 - Challenge: turn a small Unity prototype into a complete Android game that could pass store review and be maintained after release.
 - Action: owned combat flow, AI, persistence, UI states, popups, ads, Android build preparation, publishing steps, and post-release runtime tuning.
-- Result: released a complete Android game on Google Play with reviewable source code, gameplay media, ads flow, persistence, and a complete player loop.
+- Result: shipped one complete Android game to Google Play within a six-month independent development cycle, with reviewable source code and a complete player loop.
 
-Post-release update: added automatic frame-rate selection for supported 90/120 Hz devices to improve gameplay smoothness on higher-refresh mobile screens.
+Performance result: improved older-device performance from approximately 30 FPS to a stable 60 FPS. Adaptive 90 FPS and 120 FPS targets were validated on supported high-refresh devices by reducing UI draw calls and separating gameplay from presentation logic.
 
 ## My Role
 
@@ -48,7 +48,7 @@ Solo Unity C# development across gameplay programming, mobile UI implementation,
 
 ### AI Strategy System
 
-- Easy, normal, and hard AI strategies implemented through Strategy Pattern.
+- Three distinct difficulty modes - easy, normal, and hard - implemented through Strategy Pattern.
 - AI strategy selection is isolated from board rendering and lobby UI.
 - New difficulty strategies can be added without rewriting the main gameplay loop.
 
@@ -101,7 +101,7 @@ Unity vendor packages and imported assets are present in the repository, but the
 
 ## Tech Stack
 
-Unity 6, C#, UGUI, Strategy Pattern, event-driven gameplay/UI flow, Unity Ads, persistent save data, Android build pipeline, Google Play release workflow, mobile runtime tuning.
+Unity 6, C#, UGUI, Strategy Pattern, event-driven gameplay/UI flow, Unity Ads, persistent save data, Android build pipeline, Google Play release workflow, Unity Profiler, UI draw-call optimization, adaptive 60/90/120 FPS targets.
 
 ## Repository Hygiene
 
@@ -109,6 +109,10 @@ Release signing credentials, store secrets, and private deployment files are int
 
 ## Author
 
-Oleksandr Tokarev  
-Unity C# Developer / C# Gameplay Programmer  
+Oleksandr Tokarev
+
+Unity Developer | C# Gameplay Programmer
+
+Email: otokarevdev@gmail.com
+
 Portfolio: https://tokarevdev.github.io/
